@@ -78,6 +78,7 @@ RUN cabal install -j
 RUN sudo apt-get install -y --no-install-recommends python3-pip python3-setuptools && \
     sudo pip3 install entangled-filters
 RUN cabal install -j dhall-json
+RUN sudo pip3 install --upgrade jupyter bash_kernel && sudo python3 -m bash_kernel.install
 
 USER 0:0
 WORKDIR /home/${USERNAME}
