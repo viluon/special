@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM rust:1.55-buster
 
 ARG GHC_VERSION=8.8.4
 ARG STACK_RESOLVER=lts-16.12
