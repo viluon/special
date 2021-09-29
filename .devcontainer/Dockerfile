@@ -75,7 +75,8 @@ RUN git clone --branch v1.2.4 https://github.com/entangled/entangled.git
 WORKDIR /home/${USERNAME}/entangled
 RUN cabal install -j
 
-RUN sudo apt-get install -y --no-install-recommends python3-pip && sudo pip install entangled-filters
+RUN sudo apt-get install -y --no-install-recommends python3-pip && sudo pip3 install entangled-filters
+RUN cabal install -j dhall-json
 
 USER 0:0
 WORKDIR /home/${USERNAME}
