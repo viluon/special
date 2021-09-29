@@ -79,6 +79,7 @@ RUN sudo apt-get install -y --no-install-recommends python3-pip python3-setuptoo
     sudo pip3 install entangled-filters
 RUN cabal install -j dhall-json
 RUN sudo pip3 install --upgrade jupyter zsh_jupyter_kernel && sudo python3 -m zsh_jupyter_kernel.install --sys-prefix
+RUN sudo apt-get install -y --no-install-recommends zsh && cargo install hyperfine
 
 USER 0:0
 WORKDIR /home/${USERNAME}
