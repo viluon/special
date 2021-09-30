@@ -14,7 +14,7 @@ RUN apt-get update
 RUN (apt-get install -y --no-install-recommends \
                      build-essential \
                      curl \
-                     curl \
+                     jq \
                      libncurses5 \
                      libtinfo5 \
                      libtinfo5 \
