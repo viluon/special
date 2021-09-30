@@ -43,7 +43,7 @@ RUN ghcup install ghc ${GHC_VERSION} && ghcup set ghc ${GHC_VERSION}; \
 
 # Get Stack, init global project and set defaults
 RUN curl -sSL https://get.haskellstack.org/ | sh; \
-    (stack ghc -- --version 2>/dev/null) || true && \
+    (stack ghc -- --version 2>/dev/null); \
     stack config --system-ghc set system-ghc --global true && \
     stack config --system-ghc set install-ghc --global false && \
     stack config --system-ghc set resolver $STACK_RESOLVER

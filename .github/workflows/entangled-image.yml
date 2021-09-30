@@ -40,8 +40,8 @@ jobs:
         push: true
         tags: ghcr.io/viluon/special-entangled:latest
         build-args: |
-          GHC_VERSION="8.8.4"
-          STACK_RESOLVER="lts-16.12"
+          GHC_VERSION=8.8.4
+          STACK_RESOLVER=lts-16.12
         cache-from: type=local,src=/tmp/.buildx-cache
         cache-to: type=local,dest=/tmp/.buildx-cache-new
 
