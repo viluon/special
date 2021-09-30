@@ -65,7 +65,6 @@ RUN cabal install -j \
                      doctest \
                      happy \
                      pandoc-csv2table \
-                     pandoc-plot \
                      pandoc-sidenote \
                      QuickCheck
 
