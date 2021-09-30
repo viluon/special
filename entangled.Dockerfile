@@ -44,7 +44,7 @@ ENV BOOTSTRAP_HASKELL_NONINTERACTIVE=yes \
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 # Get poetry while we're at it
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python3 -
 
 # Set the GHC version
 RUN ghcup install ghc ${GHC_VERSION} && ghcup set ghc ${GHC_VERSION}; \
