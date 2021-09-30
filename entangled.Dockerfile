@@ -74,9 +74,7 @@ WORKDIR /home/${USERNAME}/entangled
 RUN cabal install -j
 
 RUN sudo pip3 install --upgrade entangled-filters jupyter zsh_jupyter_kernel && \
-    sudo python3 -m zsh_jupyter_kernel.install --sys-prefix \
-    ; pipx --version \
-    ; pipx install git+https://github.com/alexpdp7/pandocsql.git
+    sudo python3 -m zsh_jupyter_kernel.install --sys-prefix
 RUN cargo install hyperfine
 
 USER 0:0
