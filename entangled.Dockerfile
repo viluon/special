@@ -64,6 +64,7 @@ RUN cabal install -j \
                      dhall-json \
                      doctest \
                      happy \
+                     pandoc-crossref \
                      pandoc-csv2table \
                      pandoc-sidenote \
                      QuickCheck
