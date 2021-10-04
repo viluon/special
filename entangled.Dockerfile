@@ -74,7 +74,7 @@ RUN git clone --branch v1.2.4 https://github.com/entangled/entangled.git
 WORKDIR /home/${USERNAME}/entangled
 RUN cabal install -j
 
-RUN sudo pip3 install --upgrade entangled-filters jupyter zsh_jupyter_kernel && \
+RUN sudo pip3 install --upgrade entangled-filters jupyter zsh_jupyter_kernel virtualenv && \
     sudo python3 -m zsh_jupyter_kernel.install --sys-prefix \
     ; pip3 install --user pipx \
     ; python3 -m pipx ensurepath \
