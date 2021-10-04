@@ -19,7 +19,6 @@ RUN (apt-get install -y --no-install-recommends \
                      libtinfo5 \
                      libtinfo5 \
                      lsb-release \
-                     pandoc \
                      python3-pip \
                      python3-setuptools \
                      python3-venv \
@@ -64,6 +63,7 @@ RUN cabal install -j \
                      dhall-json \
                      doctest \
                      happy \
+                     pandoc \
                      pandoc-crossref \
                      pandoc-csv2table \
                      pandoc-sidenote \
