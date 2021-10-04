@@ -82,6 +82,8 @@ RUN sudo pip3 install --upgrade entangled-filters jupyter zsh_jupyter_kernel vir
     ; pipx install git+https://github.com/alexpdp7/pandocsql.git
 RUN cargo install hyperfine
 
+RUN cabal install -j pandoc-2.14.0.2
+
 USER 0:0
 WORKDIR /home/${USERNAME}
 
