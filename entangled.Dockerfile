@@ -38,8 +38,7 @@ RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
   ; locale-gen \
   ; echo "export   LC_ALL=en_US.UTF-8" >> ~/.bashrc \
   ; echo "export     LANG=en_US.UTF-8" >> ~/.bashrc \
-  ; echo "export LANGUAGE=en_US.UTF-8" >> ~/.bashrc \
-  ; source ~/.bashrc
+  ; echo "export LANGUAGE=en_US.UTF-8" >> ~/.bashrc
 
 
 RUN groupadd --gid $USER_GID $USERNAME && \
