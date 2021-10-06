@@ -4,7 +4,7 @@
 name: Entangled container CI
 on:
   push:
-    branches: [main, setup/*]
+    branches: [main, setup/*, update/*]
   pull_request:
     branches: [main]
 jobs:
