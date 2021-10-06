@@ -80,7 +80,8 @@ RUN cabal install -j \
                      pandoc-2.14.0.2 \
                      pandoc-crossref \
                      pandoc-csv2table \
-                     pandoc-sidenote \
+                     pandoc-sidenote
+RUN cabal install -j --lib \
                      QuickCheck
 
 RUN sudo pip3 install --upgrade entangled-filters jupyter zsh_jupyter_kernel virtualenv && \
