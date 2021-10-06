@@ -63,7 +63,7 @@ RUN cabal install -j \
                      dhall-json \
                      doctest \
                      happy \
-                     pandoc \
+                     pandoc-2.14.0.2 \
                      pandoc-crossref \
                      pandoc-csv2table \
                      pandoc-sidenote \
@@ -81,8 +81,6 @@ RUN sudo pip3 install --upgrade entangled-filters jupyter zsh_jupyter_kernel vir
     ; pipx --version \
     ; pipx install git+https://github.com/alexpdp7/pandocsql.git
 RUN cargo install hyperfine
-
-RUN cabal install -j --overwrite-policy=always pandoc-2.14.0.2
 
 USER 0:0
 WORKDIR /home/${USERNAME}
