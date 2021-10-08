@@ -1,4 +1,4 @@
-FROM rust:1.55-buster
+FROM rust:1.55-bullseye
 
 ARG GHC_VERSION=8.8.4
 ARG STACK_RESOLVER=lts-16.12
@@ -18,16 +18,28 @@ RUN (apt-get install -y --no-install-recommends \
                      libncurses5 \
                      libtinfo5 \
                      libtinfo5 \
+                     locales \
                      lsb-release \
+                     python3-dev \
                      python3-pip \
                      python3-setuptools \
                      python3-venv \
+                     python3-wheel \
                      sudo \
                      texlive-latex-extra \
                      zsh \
      ; apt-get autoremove -y \
      ; apt-get clean -y \
      ; rm -rf /tmp/* /var/tmp/*)
+
+# fix locales
+# FIXME: this sets up root's `.bashrc`, but later we switch to the haskeller user
+RUN sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen \
+  ; locale-gen \
+  ; echo "export   LC_ALL=en_US.UTF-8" >> ~/.bashrc \
+  ; echo "export     LANG=en_US.UTF-8" >> ~/.bashrc \
+  ; echo "export LANGUAGE=en_US.UTF-8" >> ~/.bashrc
+
 
 RUN groupadd --gid $USER_GID $USERNAME && \
     useradd -ms /bin/bash -K MAIL_DIR=/dev/null --uid $USER_UID --gid $USER_GID -m $USERNAME && \
@@ -57,7 +69,9 @@ RUN curl -sSL https://get.haskellstack.org/ | sh; \
     stack config --system-ghc set install-ghc --global false && \
     stack config --system-ghc set resolver $STACK_RESOLVER
 
-# Install global packages
+# Install Entangled & global Haskell packages
+RUN git clone --branch v1.2.4 https://github.com/entangled/entangled.git
+WORKDIR /home/${USERNAME}/entangled
 RUN cabal install -j \
                      alex \
                      dhall-json \
@@ -66,13 +80,9 @@ RUN cabal install -j \
                      pandoc-2.14.0.2 \
                      pandoc-crossref \
                      pandoc-csv2table \
-                     pandoc-sidenote \
+                     pandoc-sidenote
+RUN cabal install -j --lib \
                      QuickCheck
-
-# Install Entangled
-RUN git clone --branch v1.2.4 https://github.com/entangled/entangled.git
-WORKDIR /home/${USERNAME}/entangled
-RUN cabal install -j
 
 RUN sudo pip3 install --upgrade entangled-filters jupyter zsh_jupyter_kernel virtualenv && \
     sudo python3 -m zsh_jupyter_kernel.install --sys-prefix \
