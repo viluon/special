@@ -1,4 +1,4 @@
-FROM rust:1.55-bullseye
+FROM rust:1.56-bullseye
 
 ARG GHC_VERSION=8.8.4
 ARG STACK_RESOLVER=lts-16.12
